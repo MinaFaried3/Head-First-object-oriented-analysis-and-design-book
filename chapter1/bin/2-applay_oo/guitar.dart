@@ -1,23 +1,11 @@
-import 'enums.dart';
+import 'guitar_spec.dart';
 
 class Guitar {
-  String? serialNumber, model;
-
+  String? serialNumber;
   double? price;
+  GuitarSpec? guitarSpec;
 
-  Type? type;
-  Builder? builder;
-  Wood? backWood, topWood;
-
-  Guitar({
-    this.serialNumber,
-    this.price,
-    this.builder,
-    this.model,
-    this.type,
-    this.backWood,
-    this.topWood,
-  });
+  Guitar({this.serialNumber, this.price, this.guitarSpec});
 
   String? get getSerialNumber {
     return serialNumber;
@@ -31,23 +19,7 @@ class Guitar {
     price = newPrice;
   }
 
-  Builder? get getBuilder {
-    return builder;
-  }
-
-  String? get getModel {
-    return model;
-  }
-
-  Type? get getType {
-    return type;
-  }
-
-  Wood? get getBackWood {
-    return backWood;
-  }
-
-  Wood? get getTopWood {
-    return topWood;
+  GuitarSpec? get getGuitarSpec {
+    return guitarSpec;
   }
 }

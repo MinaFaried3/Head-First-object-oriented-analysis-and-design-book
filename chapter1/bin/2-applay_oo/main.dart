@@ -1,20 +1,21 @@
 import 'enums.dart';
 import 'guitar.dart';
+import 'guitar_spec.dart';
 import 'inventory.dart';
 
 /*
 * customers never supply a serial number or a price
 * create guitarSpec class
-* 
+* improve search method
+* replace guitar with GuitarSpec in main
 *
 * */
 
 void main() {
   Inventory inventory = Inventory();
   initializeInventory(inventory);
-  Guitar whatErinLikes = Guitar(
-    serialNumber: "",
-    price: 0,
+  // replace guitar with GuitarSpec
+  GuitarSpec whatErinLikes = GuitarSpec(
     builder: Builder.FENDER,
     model: "Stratocastor",
     type: Type.ELECTRIC,
@@ -46,8 +47,9 @@ void main() {
 
   if (matchingGuitars.isNotEmpty) {
     for (var guitar in matchingGuitars) {
+      GuitarSpec? spec = guitar?.getGuitarSpec;
       print(
-          "Erin, you might like this ${guitar!.getBuilder?.convertToString()} ${guitar.getModel} ${guitar.getType?.convertToString()} guitar:\n  ${guitar.getBackWood?.convertToString()} back and sides,\n  ${guitar.getTopWood?.convertToString()} top.\nYou can have it for only \$ ${guitar.getPrice} !");
+          "Erin, you might like this ${spec?.getBuilder?.convertToString()} ${spec?.getModel} ${spec?.getType?.convertToString()} guitar:\n  ${spec?.getBackWood?.convertToString()} back and sides,\n  ${spec?.getTopWood?.convertToString()} top.\nYou can have it for only \$ ${guitar?.getPrice} !");
       print("---------");
     }
   } else {

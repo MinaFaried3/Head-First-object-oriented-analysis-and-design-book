@@ -1,5 +1,6 @@
 import 'enums.dart';
 import 'guitar.dart';
+import 'guitar_spec.dart';
 
 class Inventory {
   late List<Guitar> guitars;
@@ -18,14 +19,15 @@ class Inventory {
     required Wood topWood,
   }) {
     Guitar guitar = Guitar(
-      serialNumber: serialNumber,
-      price: price,
-      builder: builder,
-      model: model,
-      type: type,
-      backWood: backWood,
-      topWood: topWood,
-    );
+        serialNumber: serialNumber,
+        price: price,
+        guitarSpec: GuitarSpec(
+          builder: builder,
+          model: model,
+          type: type,
+          backWood: backWood,
+          topWood: topWood,
+        ));
 
     guitars.add(guitar);
   }
@@ -39,30 +41,32 @@ class Inventory {
     return null;
   }
 
-  List<Guitar?> search(Guitar searchGuitar) {
+  List<Guitar?> search(GuitarSpec searchSPec) {
     List<Guitar?> matchingGuitars = [];
 
     for (var guitar in guitars) {
-      if (searchGuitar.getBuilder != guitar.getBuilder) {
+      //notice that
+      GuitarSpec? guitarSpec = guitar.getGuitarSpec;
+      if (searchSPec.getBuilder != guitarSpec?.getBuilder) {
         continue;
       }
 
-      String? model = searchGuitar.getModel?.toLowerCase();
+      String? model = searchSPec.getModel?.toLowerCase();
 
       if ((model != null) &&
           (model != "") &&
-          (model != guitar.getModel?.toLowerCase())) {
+          (model != guitarSpec?.getModel?.toLowerCase())) {
         continue;
       }
 
-      if (searchGuitar.getType != guitar.getType) {
+      if (searchSPec.getType != guitarSpec?.getType) {
         continue;
       }
 
-      if (searchGuitar.getTopWood != guitar.getTopWood) {
+      if (searchSPec.getTopWood != guitarSpec?.getTopWood) {
         continue;
       }
-      if (searchGuitar.getBackWood != guitar.getBackWood) {
+      if (searchSPec.getBackWood != guitarSpec?.getBackWood) {
         continue;
       }
 
