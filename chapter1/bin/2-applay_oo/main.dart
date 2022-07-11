@@ -3,7 +3,10 @@ import 'guitar.dart';
 import 'inventory.dart';
 
 /*
-*  1- customers never supply a serial number or a price
+* customers never supply a serial number or a price
+* create guitarSpec class
+* 
+*
 * */
 
 void main() {
